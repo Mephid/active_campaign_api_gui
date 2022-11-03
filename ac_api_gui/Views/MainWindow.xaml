@@ -1,0 +1,25 @@
+﻿<Window x:Class="ac_api_gui.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ac_api_gui.Views" xmlns:usercontrols="clr-namespace:ac_api_gui.UserControls"
+        mc:Ignorable="d"
+        xmlns:prism="http://prismlibrary.com/"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <usercontrols:AccountAuthentication Grid.Row="0" DataContext="{Binding}"/>
+            <ContentControl Grid.Row="1" Margin="0 10 0 10" prism:RegionManager.RegionName="ModuleRegion" />
+
+
+            <usercontrols:StatusDisplay Grid.Row="2" DataContext="{Binding}"/>
+        </Grid>
+    </Grid>
+</Window>
