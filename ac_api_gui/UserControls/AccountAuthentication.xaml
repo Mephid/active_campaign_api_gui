@@ -5,8 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ac_api_gui.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="51.755" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="100" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="textStyleTextBox">
+                <StackPanel>
+                    <AdornedElementPlaceholder Name="customAdorner" >
+                        <Border BorderBrush="red" BorderThickness="1" />
+                    </AdornedElementPlaceholder>                                        
+                    <TextBlock Margin="0 5 0 0" Foreground="red" Text="{Binding ElementName=customAdorner, Path=AdornedElement.(Validation.Errors)/ErrorContent}"/>
+                    </StackPanel>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid VerticalAlignment="Top">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
@@ -14,7 +28,7 @@
 
         <StackPanel Grid.Column="0" Margin="0 0 10 0" VerticalAlignment="Bottom">
             <Label>Account name</Label>
-            <TextBox Text="{Binding AccountName, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox Text="{Binding AccountName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Validation.ErrorTemplate="{StaticResource textStyleTextBox}"/>            
         </StackPanel>
         <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
             <Label>Api Key</Label>

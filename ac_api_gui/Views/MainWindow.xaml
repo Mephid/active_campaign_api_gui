@@ -10,7 +10,7 @@
     <Grid>
         <Grid Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="3*"/>
                 <RowDefinition Height="15*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
